@@ -1,0 +1,270 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: static/
+public_folder: //
+collections:
+  - name: config
+    label: Config
+    files:
+      - name: config
+        label: Config
+        file: exampleSite/config.toml
+        fields:
+          - widget: string
+            name: title
+            label: Title
+            required: true
+          - widget: string
+            name: baseURL
+            label: Base baseURL
+            required: false
+            hint: Hostname (and path)  to the root
+          - widget: string
+            name: languageCode
+            label: Language Code "en"
+            required: false
+          - widget: string
+            name: defaultContentLanguage
+            label: Default Content Language
+            required: false
+          - widget: string
+            name: theme
+            label: Theme name
+            required: false
+          - widget: boolean
+            name: pygmentsCodefences
+            label: Pygments Codefences
+            required: false
+          - widget: boolean
+            name: pygmentsUseClasses
+            label: Pygments Use Classes
+            required: false
+          - widget: number
+            name: rssLimit
+            label: RSS Limit
+            required: false
+            hint: Maximum number of items in the RSS feed.
+            valueType: int
+          - widget: string
+            name: copyright
+            label: Copyright
+            required: false
+          - widget: boolean
+            name: enableEmoji
+            label: Enable Emoji
+            required: false
+          - widget: string
+            name: googleAnalytics
+            label: Google Analytics Code
+            required: false
+          - widget: string
+            name: disqusShortname
+            label: Disqus Shortname
+            required: false
+          - widget: object
+            name: author
+            label: Author
+            required: false
+            fields:
+              - widget: string
+                name: name
+                label: Name
+                required: false
+          - widget: object
+            name: blackfriday
+            label: Blackfriday Settings
+            required: false
+            fields:
+              - widget: boolean
+                name: hrefTargetBlank
+                label: HrefTargetBlank
+                required: false
+                hint: true  opens absolute links in a new window or tab.
+              - widget: boolean
+                name: noreferrerLinks
+                label: HTML Noreferrer Links
+                required: false
+                hint: >-
+                  true creates absolute links with noreferrer being added to
+                  their rel attribute.
+              - widget: boolean
+                name: nofollowLinks
+                label: HTML No Follow Links
+                required: false
+                hint: >-
+                  rue creates absolute links with nofollow being added to their
+                  rel attribute.
+          - widget: object
+            name: taxonomies
+            label: Taxonomies
+            required: false
+            fields:
+              - widget: string
+                name: tag
+                label: Tag
+                required: false
+          - widget: object
+            name: params
+            label: Site Params
+            required: false
+            fields:
+              - widget: string
+                name: dateform
+                label: Date Format
+                required: false
+              - widget: string
+                name: dateformShort
+                label: Short Date Format
+                required: false
+              - widget: string
+                name: dateformNum
+                label: Number Style Date Format
+                required: false
+              - widget: string
+                name: dateformNumTime
+                label: Number Time Style Date Format
+                required: false
+              - widget: string
+                name: themeColor
+                label: Theme Color
+                required: false
+              - widget: string
+                name: homeSubtitle
+                label: Home Subtitle
+                required: false
+              - widget: string
+                name: footerCopyright
+                label: Footer Copyright
+                required: false
+              - widget: string
+                name: target
+                label: Target
+                required: false
+              - widget: string
+                name: bgImg
+                label: Background Image
+                required: false
+                hint: Homepage background-image
+              - widget: boolean
+                name: justifyContent
+                label: Justify Content
+                required: false
+              - widget: boolean
+                name: relatedPosts
+                label: Related Posts
+                required: false
+                hint: Add a related content section to all single posts page
+              - widget: boolean
+                name: code_copy_button
+                label: Code Copy Button
+                required: false
+                hint: Turn on/off the code-copy-button for code-fields
+              - widget: list
+                name: social
+                label: Social Icons
+                required: false
+                fields:
+                  - widget: string
+                    name: name
+                    label: Icon Name
+                    required: false
+                  - widget: string
+                    name: url
+                    label: Social Link
+                    required: false
+          - widget: object
+            name: menu
+            label: Site Menu
+            required: false
+            fields:
+              - widget: list
+                name: main
+                label: Main Menu
+                required: false
+                fields:
+                  - widget: string
+                    name: name
+                    label: Menu Name
+                    required: false
+                  - widget: string
+                    name: url
+                    label: Menu Link
+                    required: false
+                  - widget: number
+                    name: weight
+                    label: Menu Order Weight
+                    required: false
+                    valueType: int
+  - name: basicpage
+    label: Basic Pages
+    folder: exampleSite/content/
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+      - widget: date
+        name: date
+        label: Creat Date
+        required: false
+      - widget: markdown
+        name: body
+        label: Content
+        required: false
+        hint: Page content
+  - name: post
+    label: Blog posts
+    folder: exampleSite/content/posts
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - widget: string
+        name: title
+        label: Title
+        required: true
+      - widget: string
+        name: author
+        label: Author
+        required: false
+      - widget: date
+        name: date
+        label: Published Date
+        required: false
+      - widget: image
+        name: featuredImg
+        label: Featured Image
+        required: false
+      - widget: list
+        name: tags
+        label: Tags
+        required: false
+        field:
+          label: String
+          name: string
+          widget: string
+      - widget: list
+        name: images
+        label: Images
+        required: false
+        field:
+          label: String
+          name: string
+          widget: string
+      - widget: boolean
+        name: toc
+        label: TOC
+        required: false
+      - widget: boolean
+        name: draft
+        label: Draft
+        required: false
+      - widget: markdown
+        name: body
+        label: Content
+        required: false
+        hint: Page content
